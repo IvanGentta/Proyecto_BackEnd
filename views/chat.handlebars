@@ -1,0 +1,25 @@
+<h2>{{mainTitle}}</h2>
+
+<form id="formContainer">
+  <div>
+    <label for="formControlInput1">User</label>
+    <input
+      type="email"
+      name="user"
+      id="formControlInput1"
+      placeholder="Enter mail"
+    />
+  </div>
+  <div>
+    <label for="formControlTextarea1">Message</label>
+    <textarea name="message" id="formControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="button" id="deleteButton">Delete messages</button>
+  <button type="submit" id="formButton">Enviar</button>
+</form>
+
+<ul id="messagesContainer">
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/static/scripts/messages.js"></script>
