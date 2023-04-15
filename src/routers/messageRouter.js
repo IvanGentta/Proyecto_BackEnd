@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { MM } from "../dao/mongo/messagesManager.js";
-import { handleMessageSocket } from "../middleware/socket.js";
+import { handleMessageSocket } from "../middlewares/socket.js";
 
 export const messageRouter = Router();
 

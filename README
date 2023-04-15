@@ -1,0 +1,23 @@
+# Proyecto final de la cursada Back-End De Coderhouse
+
+### --- Primera Preentrega del PF ---
+
+========
+
+<!-- Completar -->
+
+### --- Clase Integradora ---
+
+========
+
+<!-- Completar -->
+
+### --- Segunda Preentrega del PF ---
+
+========
+
+- Mongo como sistema de persistencia (Dejé los archivos de fs para futuras referencias)
+
+- Agregado de paginacion, orden(sort), limit y filtros como handlequeries en el databaseManager.js
+
+- Metodos get actualizados para recibir los anteriores parametros opcionales, también devuelve un objeto con la info pedida para la entrega

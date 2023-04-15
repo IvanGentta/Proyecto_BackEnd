@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "ref": 1,
+    "id": "beaa6a1e610a8e83fc0559093d4a5f1a2718394d514b44b96360e939d25bfd41",
+    "title": "producto 1",
+    "description": "producto de prueba n°1",
+    "price": 100,
+    "status": true,
+    "thumbnail": "Imagen 1",
+    "stock": 1,
+    "code": "abc1"
+  },
+  {
+    "ref": 2,
+    "id": "0243e5c0e6d9e31d6e391f9224095a27edfc7b55a9ed9d41ee417a5a023305ef",
+    "title": "producto 2",
+    "description": "producto de prueba n°2",
+    "price": 200,
+    "status": true,
+    "thumbnail": "Imagen 2",
+    "stock": 2,
+    "code": "abc2"
+  },
+  {
+    "ref": 3,
+    "id": "8f5f2a35cdcd128fdbf34296cae6ec788b0e619c3ccce763658a3a3a8a37b9a9",
+    "title": "producto 3",
+    "description": "producto de prueba n°3",
+    "price": 300,
+    "status": true,
+    "thumbnail": "Imagen 3",
+    "stock": 3,
+    "code": "abc3"
+  },
+  {
+    "ref": 4,
+    "id": "2174ae38e4bfe68f8ab45dbdcf67631935c7907e4445123e0f70ee4ba721c525",
+    "title": "producto 4",
+    "description": "producto de prueba n°4",
+    "price": 400,
+    "status": true,
+    "thumbnail": "Imagen 4",
+    "stock": 4,
+    "code": "abc4"
+  },
+  {
+    "ref": 5,
+    "id": "fea632003dbd410c54026b6a3064f75984fe54f8598dcf246d7946de652edcad",
+    "title": "producto 5",
+    "description": "producto de prueba n°5",
+    "price": 500,
+    "status": true,
+    "thumbnail": "Imagen 5",
+    "stock": 5,
+    "code": "abc5"
+  },
+  {
+    "ref": 6,
+    "id": "77cad312d076953bad244b5f2058bdb7633d236702d98206979ca3a794bfe6ad",
+    "title": "producto 6",
+    "description": "producto de prueba n°6",
+    "price": 600,
+    "status": true,
+    "thumbnail": "Imagen 6",
+    "stock": 6,
+    "code": "abc6"
+  },
+  {
+    "ref": 7,
+    "id": "d8c83f77f3ed828da5843b02605afde93894d1c73a2f1ef26637334affbf585e",
+    "title": "producto 7",
+    "description": "producto de prueba n°7",
+    "price": 700,
+    "status": true,
+    "thumbnail": "Imagen 7",
+    "stock": 7,
+    "code": "abc7"
+  },
+  {
+    "ref": 8,
+    "id": "9b2e51f19d779742f754fb648b9ab4be8e76950d4064f0fa954a1027bc096daa",
+    "title": "producto 8",
+    "description": "producto de prueba n°8",
+    "price": 800,
+    "status": true,
+    "thumbnail": "Imagen 8",
+    "stock": 8,
+    "code": "abc8"
+  },
+  {
+    "ref": 9,
+    "id": "7a57369cec20d7b870c69f517adab457eda9a092ec68042e9585354b0dc6c755",
+    "title": "producto 9",
+    "description": "producto de prueba n°9",
+    "price": 900,
+    "status": true,
+    "thumbnail": "Imagen 9",
+    "stock": 9,
+    "code": "abc9"
+  },
+  {
+    "ref": 10,
+    "id": "2d4b7efad3e1c167941dc59a1505ad6d52a0838f58b895f6f7af888763299b49",
+    "title": "producto 10",
+    "description": "producto de prueba n°10",
+    "price": 1000,
+    "status": true,
+    "thumbnail": "Imagen 10",
+    "stock": 10,
+    "code": "abc10"
+  }
+]

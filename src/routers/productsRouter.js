@@ -1,7 +1,6 @@
 import express, { Router } from "express";
 import { PM } from "../dao/mongo/productManager.js";
-import { limitProducts } from "../logic/helpers.js";
-import { socketHandle } from "../middleware/socket.js";
+import { socketHandle } from "../middlewares/socket.js";
 
 export const productsRouter = Router();
 
@@ -11,16 +10,17 @@ productsRouter
   .route("/:pid")
   .get(async (req, res, next) => {
     try {
-      const response = await PM.getProductById(req.params.pid);
-      res.status(response.status_code).json(response.item);
+      const { pid: id } = req.params;
+      const response = await PM.getProductById({ id });
+      res.status(response.status_code).json({ product: response.item });
     } catch (error) {
       return next(error.message);
     }
   })
   .put(async (req, res, next) => {
     try {
-      const response = await PM.updateProduct(req.params.pid, req.body);
-      await socketHandle();
+      const { pid: id } = req.params;
+      const response = await PM.updateProduct(id, req.body);
 
       res.status(response.status_code).json(response.itemUpdated);
     } catch (error) {
@@ -29,7 +29,8 @@ productsRouter
   })
   .delete(async (req, res, next) => {
     try {
-      const response = await PM.deleteProduct(req.params.pid);
+      const { pid: id } = req.params;
+      const response = await PM.deleteProduct(id);
       await socketHandle();
 
       res
@@ -43,22 +44,12 @@ productsRouter
 productsRouter
   .route("/")
   .get(async (req, res, next) => {
-    if (req.query.limit === undefined && req.query.page === undefined)
-      return next();
     try {
-      const allProducts = await PM.getProducts();
-      const list = limitProducts(allProducts, req.query.limit, req.query.page);
-      res.json({ ...list });
+      const products = await PM.getProducts(req.query);
+      res.json(products);
     } catch (error) {
       return next(error.message);
     }
-  })
-  .get(async (req, res) => {
-    const response = await PM.getProducts();
-    res.json({
-      lenght: response.length,
-      products: response,
-    });
   })
   .post(async (req, res, next) => {
     try {

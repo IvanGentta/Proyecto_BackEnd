@@ -1,6 +1,6 @@
-import { io } from "../app.js";
-import { PM } from "../dao/fileSystem/ProductManager.js";
+import { io } from "../app/app.js";
 import { MM } from "../dao/mongo/messagesManager.js";
+import { PM } from "../dao/mongo/productManager.js";
 
 export async function socketHandle(req, res, next) {
   const products = await PM.getProducts();

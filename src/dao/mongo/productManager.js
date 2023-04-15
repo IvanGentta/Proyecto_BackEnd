@@ -11,35 +11,31 @@ class ProductManager {
     this.productsList = [];
   }
 
-  async getProducts() {
-    const products = await PM_MONGO.getItems();
-    this.productsList = products;
-    return this.productsList;
+  async getProducts(options = {}) {
+    const products = await PM_MONGO.getItems(options);
+    this.productsList = [...products.payload];
+    return { status_code: SUCCESS.GET.STATUS, products };
   }
 
   async getProductById(query) {
-    const product = await PM_MONGO.findProductByID(query);
+    const product = await PM_MONGO.getItems(query);
     return {
       status_code: SUCCESS.GET.STATUS,
-      item: product,
+      item: product.payload[0],
     };
   }
 
   async addProduct(fields) {
-    const validate = await validateInputs(fields, { strict: true });
-    if (validate.error) throw new Error(validate.status_code);
+    const strictValidation = true;
+    validateInputs(fields, strictValidation);
 
     await this.getProducts();
 
-    const match = searchMatch(fields.code, this.productsList);
-    if (match.error) throw new Error(match.status_code);
+    searchMatch(++this.#lastID, this.#productsList);
+    this.#lastID = getMax(this.#productsList);
 
-    this.#lastID = getMax(this.productsList);
-
-    const newProduct = new Products(++this.#lastID, fields);
-    this.productsList.push(newProduct);
-
-    await PM_MONGO.createItem(newProduct);
+    const newProduct = new Products({ ...fields, id: ++this.#lastID });
+    await PM_MONGO.createProduct(newProduct);
 
     return {
       status_code: SUCCESS.CREATED.STATUS,
@@ -48,8 +44,8 @@ class ProductManager {
   }
 
   async updateProduct(productId, fields) {
-    const response = await this.getProductById(productId);
-    const product = response.item;
+    const { item } = await this.getProductById(productId);
+    const product = item;
 
     const validate = await validateInputs(fields, { strict: false });
     if (validate.error) throw new Error(validate.status_code);

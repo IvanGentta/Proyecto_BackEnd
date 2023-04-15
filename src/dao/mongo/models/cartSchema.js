@@ -1,8 +1,13 @@
-import { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const cartSchema = new Schema({
-  ref: { type: String, required: true },
-  products: { type: Array },
-});
+const cartSchema = new Schema(
+  {
+    id: { type: String, required: true, unique: true },
+    products: { type: Array, default: [] },
+  },
+  { versionKey: false }
+);
 
-export { cartSchema };
+const cartModel = mongoose.model("carts", cartSchema);
+
+export { cartModel };

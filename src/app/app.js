@@ -1,19 +1,19 @@
 import express from "express";
 import { engine } from "express-handlebars";
-import { Server } from "socket.io";
 import mongoose from "mongoose";
+import { Server } from "socket.io";
 
 import { productsRouter } from "../routers/productsRouter.js";
-import { cartRouter } from "../routers/cartRouter.js";
-import { viewsRouter } from "../routers/viewsRouter.js";
+// import { cartRouter } from "../routers/cartRouter.js";
+// import { viewsRouter } from "../routers/viewsRouter.js";
 
 import { handleError } from "../middlewares/errors.js";
-import { handleMessageSocket, socketHandle } from "../middleware/socket.js";
 import { PORT } from "../config/server.config.js";
-import { URL } from "../config/database.js";
-import { messageRouter } from "../routers/messageRouter.js";
+import { MONGODB_CNX_STR } from "../config/database.js";
+// import { messageRouter } from "../routers/messageRouter.js";
+// import { handleMessageSocket, socketHandle } from "../middlewares/socket.js";
 
-await mongoose.connect(URL);
+await mongoose.connect(MONGODB_CNX_STR);
 
 const app = express();
 app.use("/static", express.static("./static"));
@@ -22,19 +22,13 @@ app.engine("handlebars", engine());
 app.set("views", "./views");
 
 app.use("/api/v1/products", productsRouter);
-app.use("/api/v1/cart", cartRouter);
-app.use("/api/v1/messages", messageRouter);
-app.use("/", viewsRouter);
+// app.use("/api/v1/cart", cartRouter);
+// app.use("/api/v1/messages", messageRouter);
+// app.use("/", viewsRouter);
 app.use(handleError);
 
 const server = app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
-  console.log("Path to static view: ", "http:localhost:8080/");
-  console.log(
-    "Path to dinamic view: ",
-    "http:localhost:8080/realtimeproducts”"
-  );
-  console.log("Path to API: ", "http:localhost:8080/api/products");
+  console.log(`app listening on port ${PORT}`);
 });
 
 export const io = new Server(server);
